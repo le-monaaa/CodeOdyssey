@@ -1,6 +1,8 @@
 package code.odyssey.common.domain.guild.service;
 
 import code.odyssey.common.domain.guild.dto.GuildCreateRequest;
+import code.odyssey.common.domain.guild.dto.GuildSearchRequest;
+import code.odyssey.common.domain.guild.dto.GuildSimpleInfo;
 import code.odyssey.common.domain.guild.enums.GuildRole;
 import code.odyssey.common.domain.guild.entity.Guild;
 import code.odyssey.common.domain.guild.entity.GuildMember;
@@ -8,11 +10,14 @@ import code.odyssey.common.domain.guild.exception.GuildErrorCode;
 import code.odyssey.common.domain.guild.exception.GuildException;
 import code.odyssey.common.domain.guild.repository.GuildMemberRepository;
 import code.odyssey.common.domain.guild.repository.GuildRepository;
+import code.odyssey.common.domain.guild.repository.GuildSearchRepository;
 import code.odyssey.common.domain.member.entity.Member;
 import code.odyssey.common.domain.member.exception.MemberErrorCode;
 import code.odyssey.common.domain.member.exception.MemberException;
 import code.odyssey.common.domain.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -21,6 +26,7 @@ import org.springframework.stereotype.Service;
 public class GuildService {
 
     private final GuildRepository guildRepository;
+    private final GuildSearchRepository guildSearchRepository;
     private final GuildMemberRepository guildMemberRepository;
     private final MemberRepository memberRepository;
 
@@ -54,6 +60,10 @@ public class GuildService {
         guildMemberRepository.save(guildMember);
 
         return guild.getId();
+    }
+
+    public Page<GuildSimpleInfo> searchGuilds(GuildSearchRequest request, Pageable pageable) {
+        return guildSearchRepository.search(request,pageable);
     }
 
 }
