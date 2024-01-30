@@ -1,0 +1,19 @@
+
+
+spring:
+  ssl:
+    bundle:
+      jks:
+        server:
+          key:
+            alias: "ssafy"
+          keystore:
+            location: "classpath:keystore/ssafy.p12"
+            password: "123456"
+            type: "PKCS12"
+server:
+  port: 8443
+  ssl:
+    bundle: "server"
+    enabled: true
+    enabled-protocols: TLSv1.3
