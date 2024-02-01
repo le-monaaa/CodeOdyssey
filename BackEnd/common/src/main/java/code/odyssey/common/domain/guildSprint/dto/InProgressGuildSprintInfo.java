@@ -3,28 +3,30 @@ package code.odyssey.common.domain.guildSprint.dto;
 import code.odyssey.common.domain.problem.entity.enums.ProblemPlatform;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 
 @Getter
 @JsonNaming(SnakeCaseStrategy.class)
-public class WaitingGuildSprintInfo {
+public class InProgressGuildSprintInfo {
 
 	private Long sprintId;
 	private String sprintName;
-	private Integer sprintDay;
-	private List<WaitingGuildProblemInfo> problemList = new ArrayList<>();
+	private LocalDate startedAt;
+	private LocalDate endedAt;
+	private Integer time;
+	private List<InProgressGuildProblemInfo> problemList = new ArrayList<>();
 
 	@Getter
 	@JsonNaming(SnakeCaseStrategy.class)
-	public static class WaitingGuildProblemInfo {
+	public static class InProgressGuildProblemInfo {
+		private String type;
 		private Long guildProblemId;
-		private Long problemId;
 		private Integer difficulty;
 		private String title;
-		private ProblemPlatform platform;
-
+		private Integer percent;
 	}
 
 }
