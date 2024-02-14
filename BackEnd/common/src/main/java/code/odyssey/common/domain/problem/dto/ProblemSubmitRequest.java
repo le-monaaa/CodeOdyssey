@@ -1,5 +1,6 @@
 package code.odyssey.common.domain.problem.dto;
 
+import code.odyssey.common.domain.problem.entity.enums.ProblemPlatform;
 import lombok.Builder;
 import lombok.Getter;
 
