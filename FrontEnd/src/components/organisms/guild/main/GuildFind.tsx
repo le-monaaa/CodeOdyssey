@@ -28,11 +28,9 @@ const GuildFind = () => {
   };
 
   const onClick = () => {
-    // 7로 바꿔야됌 data[7]로
-    if (data[0]) {
+    if (data[7]) {
       const fetchData = async () => {
-        // 7로 바꿔야됌 data[7]로
-        const fetchdata = await findGuild({ keyword: searchInput, guildId: data[0].guild_id }); //guild id
+        const fetchdata = await findGuild({ keyword: searchInput, guildId: data[7].guild_id }); //guild id
         setData(fetchdata);
       };
       fetchData();

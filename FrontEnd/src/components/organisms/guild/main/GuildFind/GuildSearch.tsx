@@ -50,11 +50,6 @@ const GuildSearch = (props: GuildSearchProps) => (
       <Body1 children={'+'} color={colors.White}/> 
     </StyledButton>
     }
-
-    {/* 테스트 용 나중에 지워야함 */}
-    <StyledButton onClick={props.onClick}>
-        <Body1 children={'+'} color={colors.White}/> 
-    </StyledButton>
   
   </>
 );
